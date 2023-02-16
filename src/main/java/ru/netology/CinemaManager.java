@@ -1,42 +1,43 @@
 package ru.netology;
 
 public class CinemaManager {
-    private Poster[] posters = new Poster[0];
-    private int maxposters;
 
-    public CinemaManager(int maxposters) {
-        this.maxposters = maxposters;
-    }
+    private String[] cinema = new String[0];
+    private int limit;
 
     public CinemaManager() {
-        this.maxposters = 10;
+        this.limit = 10;
     }
 
-    public void Save(Poster poster) {
-        Poster[] tmp = new Poster[posters.length + 1];
-        for (int i = 0; i < posters.length; i++) {
-            tmp[i] = posters[i];
+    public CinemaManager(int limit) {
+        this.limit = limit;
+    }
+
+    public void add(String post) {
+        String[] tmp = new String[cinema.length + 1];
+        for (int i = 0; i < cinema.length; i++) {
+            tmp[i] = cinema[i];
         }
-        tmp[tmp.length - 1] = poster;
-        posters = tmp;
+        tmp[tmp.length - 1] = post;
+        cinema = tmp;
     }
 
-    public Poster[] findAll() {
-        return posters;
+    public String[] findAll() {
+        return cinema;
     }
 
-    public Poster[] findLast() {
-        int resultlenght;
-        if (posters.length < maxposters) {
-            resultlenght = posters.length;
+    public String[] findLast() {
+        int resultLength;
+        if (cinema.length < limit) {
+            resultLength = cinema.length;
         } else {
-            resultlenght = maxposters;
+            resultLength = limit;
         }
-        Poster[] result = new Poster[resultlenght];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = posters[posters.length - 1 - i];
+        String[] tmp = new String[resultLength];
+        for (int i = 0; i < tmp.length; i++) {
+            tmp[i] = cinema[cinema.length - 1 - i];
         }
-        return result;
+        return tmp;
     }
 }
 
